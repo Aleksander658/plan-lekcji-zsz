@@ -1,0 +1,59 @@
+* {
+    font-family: "Gill Sans", sans-serif;
+}
+
+header {
+    background-color: darkseagreen;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    float: left;
+    color: white;
+}
+
+nav {
+    background-color: lavender;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    clear: both;
+}
+
+nav a {
+    margin: 10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 10px;
+    width: 100%;
+}
+
+aside {
+    background-color: snow;
+    padding: 10px;
+    text-align: center;
+    width: 35%;
+    height: 250px;
+    float: left;
+}
+
+div {
+    background-color: snow;
+    padding: 10px;
+    text-align: center;
+    width: 35%;
+    height: 250px;
+    float: left;
+}
+
+main {
+    background-color: snow;
+    padding: 10px;
+    text-align: center;
+    width: 30%;
+    height: 500px;
+    float: right;
+}
