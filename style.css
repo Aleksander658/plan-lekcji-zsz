@@ -1,6 +1,12 @@
 * {
-    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
     font-family: "Gill Sans", sans-serif;
+}
+
+body {
+    overflow: hidden;
 }
 
 header {
@@ -13,6 +19,12 @@ header {
     color: white;
 }
 
+h1 {
+    font-size: 40px;
+    margin: 10px;
+    padding: 10px;
+}
+
 nav {
     background-color: lavender;
     padding: 10px;
@@ -20,6 +32,7 @@ nav {
     text-align: center;
     height: auto;
     clear: both;
+    font-size: 20px;
 }
 
 nav a {
@@ -55,6 +68,30 @@ ul {
     padding: 5px;
     
 }
+
+#nauczyciele, #nauczyciele2, #klasa {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#klasa {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#klasa li {
+    flex: 1 1 auto;
+    margin: 5px;
+    text-align: center;
+}
+
 aside {
     background-color: snow;
     text-align: center;
@@ -63,12 +100,13 @@ aside {
     float: left;
 }
 
-div {
+section {
     background-color: snow;
     text-align: center;
     width: 35%;
     height: 500px;
     float: left;
+    overflow: hidden;
 }
 
 .slideshow-container {
@@ -93,11 +131,75 @@ main {
     width: 65%;
     height: 1000px;
     float: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 30px;
+    color: darkslategray;
 }
 
 main table {
     padding: 10px;
-    margin: 10px;
     text-align: center;
+    width: 99%;
+    margin: 0 auto; /* Center the table */
+    border-collapse: collapse;
+    text-align: center;
+}
+
+main table th, main table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+main table th {
+    background-color: #f2f2f2;
+    color: black;
+}
+
+main table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+main table tr:hover {
+    background-color: #ddd;
+}
+
+@media (max-width: 768px) {
+    header, nav, aside, main, section, table {
+        width: 100%;
+        float: none;
+        height: auto;
+    }
+
+    .slideshow-container {
+        height: auto;
+    }
+
+    main {
+        height: auto;
+    }
+}
+
+#nauczyciele, #nauczyciele2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#nauczyciele li, #nauczyciele2 li {
+    flex: 1 1 auto;
+    margin: 5px;
+    text-align: center;
 }
