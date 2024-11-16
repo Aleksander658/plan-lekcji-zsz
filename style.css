@@ -203,3 +203,12 @@ main table tr:hover {
     margin: 5px;
     text-align: center;
 }
+
+#nauczyciele td, #nauczyciele2 td {
+    border: 1px solid darkseagreen;
+    padding: 5px;
+}
+
+#nauczyciele td:hover, #nauczyciele2 td:hover {
+    background-color: #ddd; /* Add this line */
+}
