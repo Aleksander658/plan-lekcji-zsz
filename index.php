@@ -56,32 +56,34 @@
         <h2>Informacje</h2>
     </aside>
     <main>
-        <h2>Plan lekcji/Zastępstwa</h2>
+        <h2>Zastępstwa</h2>
         <table border=1>
             <tr>
-                <th>Lekcja</th>
-                <th>Godzina</th>
+                <th>Numer Lekcji i Godzina</th>
+                <th>Data</th>
+                <th>Klasa</th>
                 <th>Zajęcia</th>
                 <th>Nauczyciel</th>
                 <th>Zastępstwo</th>
                 <th>Nauczyciel</th>
-                <th>Klasa</th>
             </tr>
             <?php
             $lessons = [
-                ["1", "8:00-8:45", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec", "1SB"],
-                ["2", "8:55-9:40", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec", "1SB"],
-                ["3", "9:50-10:35", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec", "1SB"],
-                ["4", "10:55-11:40", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec", "1SB"],
-                ["5", "11:50-12:35", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec", "1SB"],
-                ["6", "12:45-13:30", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec", "1SB"],
-                ["7", "13:40-14:25", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec", "1SB"],
-                ["8", "14:35-15:20", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec", "1SB"]
+                ["1.", "8:00-8:45", "2023-10-01", "1SB", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec"],
+                ["2.", "8:55-9:40", "2023-10-01", "1SB", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec"],
+                ["3.", "9:50-10:35", "2023-10-01", "1SB", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec"],
+                ["4.", "10:55-11:40", "2023-10-01", "1SB", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec"],
+                ["5.", "11:50-12:35", "2023-10-01", "1SB", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec"],
+                ["6.", "12:45-13:30", "2023-10-01", "1SB", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec"],
+                ["7.", "13:40-14:25", "2023-10-01", "1SB", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec"],
+                ["8.", "14:35-15:20", "2023-10-01", "1SB", "W-F", "W.Szafraniec", "W-F", "W.Szafraniec"]
             ];
             foreach ($lessons as $lesson) {
                 echo '<tr>';
-                foreach ($lesson as $item) {
-                    echo '<td>' . htmlspecialchars($item, ENT_QUOTES, 'UTF-8') . '</td>';
+                echo '<td>' . htmlspecialchars($lesson[0] . ' ' . $lesson[1], ENT_QUOTES, 'UTF-8') . '</td>';
+                echo '<td>' . htmlspecialchars($lesson[2], ENT_QUOTES, 'UTF-8') . '</td>';
+                for ($i = 3; $i < count($lesson); $i++) {
+                    echo '<td>' . htmlspecialchars($lesson[$i], ENT_QUOTES, 'UTF-8') . '</td>';
                 }
                 echo '</tr>';
             }
