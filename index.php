@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plan lekcji ZSZ Bobowa</title>
     <link rel="stylesheet" href="style.css">
+    <meta http-equiv="refresh" content="3600">
 </head>
 <body>
     <header>
@@ -52,9 +53,59 @@
             ?>
         </ul>
     </nav>
+    <article>
+        <time datetime="<?php echo date('Y-m-d\TH:i:s'); ?>">
+            <?php echo date('H:i'); ?>
+        </time>
+        <div class="message"></div>
+    </article>
     <aside>
         <h2>Informacje</h2>
+        <div
+     class="post">
+            <h3>Przykładowy Post</h3>
+            <p>Witajcie uczniowie! Przypominamy, że w przyszłym tygodniu odbędzie się wycieczka szkolna do Krakowa. Prosimy o zabranie ze sobą odpowiednich dokumentów oraz zgody rodziców. Szczegóły dotyczące wyjazdu znajdziecie na tablicy ogłoszeń.</p>
+            <p>Data: 2023-10-15</p>
+        </div>
     </aside>
+    <footer>
+    <h2>Aktualne lekcje</h2>
+        <table border=1>
+            <thead>
+                <tr>
+                    <th>Numer Lekcji i Godzina</th>
+                    <th>Data</th>
+                    <th>Klasa</th>
+                    <th>Zajęcia</th>
+                    <th>Nauczyciel</th>
+                    <th>Sala</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $lessons = [
+                    ["1.", "8:00-8:45", "2023-10-01", "1SB", "W-F", "W.Szafraniec", "11"],
+                    ["1.", "8:00-8:45", "2023-10-01", "1TA", "W-F", "W.Szafraniec", "9"],
+                    ["1.", "8:00-8:55", "2023-10-01", "2bSB", "W-F", "W.Szafraniec", "24"],
+                    ["1.", "8:00-8:45", "2023-10-01", "2aSB", "W-F", "W.Szafraniec", "29"],
+                    ["1.", "8:00-8:45", "2023-10-01", "2Ta", "W-F", "W.Szafraniec", "27"],
+                    ["1.", "8:00-8:45", "2023-10-01", "3SB 3bSB", "W-F", "W.Szafraniec", "25"],
+                    ["1.", "8:00-8:45", "2023-10-01", "3SB 3aSB", "W-F", "W.Szafraniec", "21"],
+                    ["1.", "8:00-8:45", "2023-10-01", "3bT", "W-F", "W.Szafraniec", "16"]
+                ];
+                foreach ($lessons as $lesson) {
+                    echo '<tr>';
+                    echo '<td>' . htmlspecialchars($lesson[0] . ' ' . $lesson[1], ENT_QUOTES, 'UTF-8') . '</td>';
+                    echo '<td>' . htmlspecialchars($lesson[2], ENT_QUOTES, 'UTF-8') . '</td>';
+                    for ($i = 3; $i < count($lesson); $i++) {
+                        echo '<td>' . htmlspecialchars($lesson[$i], ENT_QUOTES, 'UTF-8') . '</td>';
+                    }
+                    echo '</tr>';
+                }
+                ?>
+            </tbody>
+        </table>
+        </footer>
     <main>
         <h2>Zastępstwa</h2>
         <table border=1>
@@ -100,7 +151,7 @@
                 echo '<img src="' . htmlspecialchars($image, ENT_QUOTES, 'UTF-8') . '" class="' . $activeClass . '">';
             }
             ?>
-        </div>
+        </p>
     </section>
 <script src="script.js"></script>
 </body>
