@@ -77,31 +77,36 @@ function updateTime() {
 setInterval(updateTime, 60000);
 updateTime(); // Initial call to set the time immediately
 
-function updateLessons() {
-    const lessons = [
-        ["1. 8:00-8:45", "2023-10-01", "1SB", "W-F", "W.Szafraniec", "11"],
-        ["1. 8:00-8:45", "2023-10-01", "1TA", "W-F", "W.Szafraniec", "9"],
-        ["1. 8:00-8:55", "2023-10-01", "2bSB", "W-F", "W.Szafraniec", "24"],
-        ["1. 8:00-8:45", "2023-10-01", "2aSB", "W-F", "W.Szafraniec", "29"],
-        ["1. 8:00-8:45", "2023-10-01", "2Ta", "W-F", "W.Szafraniec", "27"],
-        ["1. 8:00-8:45", "2023-10-01", "3SB 3bSB", "W-F", "W.Szafraniec", "25"],
-        ["1. 8:00-8:45", "2023-10-01", "3SB 3aSB", "W-F", "W.Szafraniec", "21"],
-        ["1. 8:00-8:45", "2023-10-01", "3bT", "W-F", "W.Szafraniec", "16"]
-    ];
+async function fetchLessons() {
+    const response = await fetch('lessons.php');
+    const lessons = await response.json();
+    return lessons;
+}
 
-    const tableBody = document.querySelector('footer table tbody');
+async function updateLessons() {
+    const lessons = await fetchLessons();
+
+    const tableBody = document.querySelector('#lessons-today');
     tableBody.innerHTML = ''; // Clear existing rows
+
+    const currentDate = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
 
     lessons.forEach(lesson => {
         const row = document.createElement('tr');
-        lesson.forEach(cellText => {
+        lesson.forEach((cellText, index) => {
             const cell = document.createElement('td');
+            if (index === 1) {
+                const dateCell = document.createElement('td');
+                dateCell.textContent = currentDate;
+                row.appendChild(dateCell);
+            }
             cell.textContent = cellText;
             row.appendChild(cell);
         });
+
         tableBody.appendChild(row);
     });
 }
 
-setInterval(updateLessons, 3600000); // Update every hour
+setInterval(updateLessons, 60000); // Update every minute
 updateLessons(); // Initial call to set the lessons immediately
