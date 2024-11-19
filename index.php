@@ -10,45 +10,33 @@
 </head>
 
 <body>
-
-<header>
-    
-    <h1>Plan lekcji ZSZ Bobowa</h1>
-    
-</header>
-
-<article>
-    
-    <time datetime="<?php echo date('Y-m-d\TH:i:s'); ?>">
+    <article>
+        <img src="Logo ZSZ Bobwa.png" alt="Logo ZSZ Bobwa">
+        <time datetime="<?php echo date('Y-m-d\TH:i:s'); ?>">
+            <?php echo date('H:i'); ?>
+        </time>
         
-        <?php echo date('H:i'); ?>
+        <div class="message"></div>
+    
+    </article>
+    
+    <aside>
         
-    </time>
+        <h2>Informacje</h2>
+        
+        <div class="post">
+            <h3>Przykładowy Post</h3>
+            <p>Witajcie uczniowie! Przypominamy, że w przyszłym tygodniu odbędzie się wycieczka szkolna do Krakowa. Prosimy o zabranie ze sobą odpowiednich dokumentów oraz zgody rodziców. Szczegóły dotyczące wyjazdu znajdziecie na tablicy ogłoszeń.</p>
+            <p>Data: 2023-10-15</p>
+        </div>
     
-    <div class="message"></div>
+    </aside>
     
-</article>
+    <footer>
     
-<aside>
-
-    <h2>Informacje</h2>
-    
-    <div class="post">
-    
-        <h3>Przykładowy Post</h3>
-        <p>Witajcie uczniowie! Przypominamy, że w przyszłym tygodniu odbędzie się wycieczka szkolna do Krakowa. Prosimy o zabranie ze sobą odpowiednich dokumentów oraz zgody rodziców. Szczegóły dotyczące wyjazdu znajdziecie na tablicy ogłoszeń.</p>
-        <p>Data: 2023-10-15</p>
-
-    </div>
-
-</aside>
-
-<footer>
-
-    <h2>Aktualne lekcje</h2>
-    
+        <h2>Aktualne lekcje</h2>
+        
         <table border=1>
-        
             <thead>
                 <tr>
                     <th>Numer Lekcji i Godzina</th>
@@ -66,14 +54,13 @@
         
         </table>
     
-</footer>
+    </footer>
 
-<main>
-
-    <h2>Zastępstwa</h2>
+    <main>
     
+        <h2>Zastępstwa</h2>
+            
         <table border=1>
-        
             <tr>
                 <th>Numer Lekcji i Godzina</th>
                 <th>Data</th>
@@ -81,10 +68,11 @@
                 <th>Zajęcia</th>
                 <th>Nauczyciel</th>
                 <th>Zastępstwo</th>
-                <th>Nauczyciel na Zastępstwo</th>
+                <th>Nauczyciel</th>
             </tr>
             
-        <?php
+            <?php
+            
             $jsonData = file_get_contents('substitutions.json');
             $substitutions = json_decode($jsonData, true);
         
@@ -102,29 +90,29 @@
             ?>
         
         </table>
+    </main>
 
-</main>
-    
-<section>
-
-    <h2>Zdjęcia</h2>
+    <section>
         
-    <div class="slideshow-container">
+        <h2>Zdjęcia</h2>
         
-        <?php
+        <div class="slideshow-container">
+            
+            <?php
+            
             $images = ["zdjecie1.jpg", "zdjecie2.jpg", "zdjecie3.jpg", "zdjecie4.jpg", "zdjecie5.jpg", "zdjecie6.jpg"];
-        
+            
             foreach ($images as $index => $image) {
                 $activeClass = $index === 0 ? 'active' : '';
                 echo '<img src="' . htmlspecialchars($image, ENT_QUOTES, 'UTF-8') . '" class="' . $activeClass . '">';
             }
             ?>
-
-    </div>
+        
+        </div>
     
-</section>
+    </section>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>

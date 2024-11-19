@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wprowadzenie danych do Zastępstwa</title>
+    <link rel="stylesheet" href="style2.css">
 </head>
-<body>
-    <header>
-        <h1>Wprowadzenie danych do Zastępstwa</h1>
-    </header>
-    <nav>
 
-    </nav>
+<body>
+    
+    <header>
+    
+        <h1>Wprowadzenie danych do Zastępstwa</h1>
+    
+    </header>
+
     <main>
+        
         <form action="index2.php" method="post">
+            
             <label for="L&H">Numer Lekcji i Godzina:</label>
+            
             <select id="L&H" name="L&H" required>
                 <option value="1. 8:00-8:45">1. 8:00-8:45</option>
                 <option value="2. 8:50-9:35">2. 8:50-9:35</option>
@@ -27,11 +34,16 @@
                 <option value="8. 14:00-14:45">8. 14:00-14:45</option>
                 <option value="9. 14:50-15:35">9. 14:50-15:35</option>
             </select>
+            
             <br>
+            
             <label for="date">Data:</label>
             <input type="date" id="date" name="date" required>
+            
             <br>
+            
             <label for="class">Klasa:</label>
+            
             <select id="class" name="class" required>
                 <option value="1SB">1SB</option>
                 <!-- Add more options as needed -->
@@ -46,11 +58,16 @@
                 <option value="4aT">4aT</option>
                 <option value="5aT">5aT</option>
             </select>
+            
             <br>
+            
             <label for="subject">Zajęcia:</label>
             <input type="text" id="subject" name="subject" required>
+            
             <br>
+            
             <label for="teacher">Nauczyciel:</label>
+            
             <select id="teacher" name="teacher" required>
                 <option value="W.Szafraniec">W.Szafraniec</option>
                 <!-- Add more options as needed -->
@@ -85,13 +102,17 @@
                 <option value="J.Wiejaczka">J.Wiejaczka</option>
                 <option value="E.Wołkowicz">E.Wołkowicz</option>
                 <option value="J.Zborowska">J.Zborowska</option>
-                <option value="-">-</option>
             </select>
+            
             <br>
+            
             <label for="zastepstwo">Zastępstwo:</label>
             <input type="text" id="zastepstwo" name="zastepstwo" required>
+            
             <br>
+            
             <label for="teacher2">Nauczyciel na zastepstwo:</label>
+            
             <select id="teacher2" name="teacher2" required>
                 <option value="W.Szafraniec">W.Szafraniec</option>
                 <!-- Add more options as needed -->
@@ -128,7 +149,9 @@
                 <option value="J.Zborowska">J.Zborowska</option>
                 <option value="-">-</option>
             </select>
+            
             <button type="submit">Dodaj</button>
+        
         </form>
 
         <?php
@@ -149,6 +172,8 @@
             file_put_contents('substitutions.json', json_encode($substitutions));
         }
         ?>
+    
     </main>
+
 </body>
 </html>
