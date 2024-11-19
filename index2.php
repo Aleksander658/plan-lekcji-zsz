@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wprowadzenie danych do Zastępstwa</title>
+</head>
+<body>
+    <header>
+        <h1>Wprowadzenie danych do Zastępstwa</h1>
+    </header>
+    <nav>
+
+    </nav>
+    <main>
+        <form action="index2.php" method="post">
+            <label for="L&H">Numer Lekcji i Godzina:</label>
+            <select id="L&H" name="L&H" required>
+                <option value="1. 8:00-8:45">1. 8:00-8:45</option>
+                <option value="2. 8:50-9:35">2. 8:50-9:35</option>
+                <!-- Add more options as needed -->
+                <option value="3. 9:40-10:25">3. 9:40-10:25</option>
+                <option value="4. 10:30-11:15">4. 10:30-11:15</option>
+                <option value="5. 11:30-12:15">5. 11:30-12:15</option>
+                <option value="6. 12:20-13:05">6. 12:20-13:05</option>
+                <option value="7. 13:10-13:55">7. 13:10-13:55</option>
+                <option value="8. 14:00-14:45">8. 14:00-14:45</option>
+                <option value="9. 14:50-15:35">9. 14:50-15:35</option>
+            </select>
+            <br>
+            <label for="date">Data:</label>
+            <input type="date" id="date" name="date" required>
+            <br>
+            <label for="class">Klasa:</label>
+            <select id="class" name="class" required>
+                <option value="1SB">1SB</option>
+                <!-- Add more options as needed -->
+                <option value="1Ta">1Ta</option>
+                <option value="2bSB">2bSB</option>
+                <option value="2aSB">2aSB</option>
+                <option value="2Ta">2Ta</option>
+                <option value="3SB 3bSB">3Sb 3bSB</option>
+                <option value="3aB 3aSB">3aB 3aSB</option>
+                <option value="3bT">3bT</option>
+                <option value="3aT">3aT</option>
+                <option value="4aT">4aT</option>
+                <option value="5aT">5aT</option>
+            </select>
+            <br>
+            <label for="subject">Zajęcia:</label>
+            <input type="text" id="subject" name="subject" required>
+            <br>
+            <label for="teacher">Nauczyciel:</label>
+            <select id="teacher" name="teacher" required>
+                <option value="W.Szafraniec">W.Szafraniec</option>
+                <!-- Add more options as needed -->
+                <option value="A.Iwańska">A.Iwańska</option>
+                <option value="G.Bogusz">G.Bogusz</option>
+                <option value="E.Brońska">E.Brońska</option>
+                <option value="K.Flądro">K.Flądro</option>
+                <option value="J.Forczek">J.Forczek</option>
+                <option value="B.Forczek-Serafin">B.Forczek-Serafin</option>
+                <option value="J.Gagatek">J.Gagatek</option>
+                <option value="B.Gryzło">B.Gryzło</option>
+                <option value="M.Gucwa">M.Gucwa</option>
+                <option value="T.Gucwa">T.Gucwa</option>
+                <option value="J.Igielski">J.Igielski</option>
+                <option value="K.Janusz">K.Janusz</option>
+                <option value="B.Jasińska">B.Jasińska</option>
+                <option value="I.Kalisz">I.Kalisz</option>
+                <option value="P.Kruczek">P.Kruczek</option>
+                <option value="P.Kuk">P.Kuk</option>
+                <option value="P.Łebski">P.Łebski</option>
+                <option value="T.Magiera">T.Magiera</option>
+                <option value="K.Paluch">K.Paluch</option>
+                <option value="R.Pękala">R.Pękala</option>
+                <option value="P.Ptaszkowski">P.Ptaszkowski</option>
+                <option value="A.Skórska">A.Skórska</option>
+                <option value="T.Skórski">T.Skórski</option>
+                <option value="J.Średniawa">J.Średniawa</option>
+                <option value="R.Święs">R.Święs</option>
+                <option value="S.Szafraniec">S.Szafraniec</option>
+                <option value="S.Szczepanek">S.Szczepanek</option>
+                <option value="P.Szura">P.Szura</option>
+                <option value="J.Wiejaczka">J.Wiejaczka</option>
+                <option value="E.Wołkowicz">E.Wołkowicz</option>
+                <option value="J.Zborowska">J.Zborowska</option>
+                <option value="-">-</option>
+            </select>
+            <br>
+            <label for="zastepstwo">Zastępstwo:</label>
+            <input type="text" id="zastepstwo" name="zastepstwo" required>
+            <br>
+            <label for="teacher2">Nauczyciel na zastepstwo:</label>
+            <select id="teacher2" name="teacher2" required>
+                <option value="W.Szafraniec">W.Szafraniec</option>
+                <!-- Add more options as needed -->
+                <option value="A.Iwańska">A.Iwańska</option>
+                <option value="G.Bogusz">G.Bogusz</option>
+                <option value="E.Brońska">E.Brońska</option>
+                <option value="K.Flądro">K.Flądro</option>
+                <option value="J.Forczek">J.Forczek</option>
+                <option value="B.Forczek-Serafin">B.Forczek-Serafin</option>
+                <option value="J.Gagatek">J.Gagatek</option>
+                <option value="B.Gryzło">B.Gryzło</option>
+                <option value="M.Gucwa">M.Gucwa</option>
+                <option value="T.Gucwa">T.Gucwa</option>
+                <option value="J.Igielski">J.Igielski</option>
+                <option value="K.Janusz">K.Janusz</option>
+                <option value="B.Jasińska">B.Jasińska</option>
+                <option value="I.Kalisz">I.Kalisz</option>
+                <option value="P.Kruczek">P.Kruczek</option>
+                <option value="P.Kuk">P.Kuk</option>
+                <option value="P.Łebski">P.Łebski</option>
+                <option value="T.Magiera">T.Magiera</option>
+                <option value="K.Paluch">K.Paluch</option>
+                <option value="R.Pękala">R.Pękala</option>
+                <option value="P.Ptaszkowski">P.Ptaszkowski</option>
+                <option value="A.Skórska">A.Skórska</option>
+                <option value="T.Skórski">T.Skórski</option>
+                <option value="J.Średniawa">J.Średniawa</option>
+                <option value="R.Święs">R.Święs</option>
+                <option value="S.Szafraniec">S.Szafraniec</option>
+                <option value="S.Szczepanek">S.Szczepanek</option>
+                <option value="P.Szura">P.Szura</option>
+                <option value="J.Wiejaczka">J.Wiejaczka</option>
+                <option value="E.Wołkowicz">E.Wołkowicz</option>
+                <option value="J.Zborowska">J.Zborowska</option>
+                <option value="-">-</option>
+            </select>
+            <button type="submit">Dodaj</button>
+        </form>
+
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = [
+                'L&H' => $_POST['L&H'],
+                'date' => $_POST['date'],
+                'class' => $_POST['class'],
+                'subject' => $_POST['subject'],
+                'teacher' => $_POST['teacher'],
+                'zastepstwo' => $_POST['zastepstwo'],
+                'teacher2' => $_POST['teacher2']
+            ];
+
+            $jsonData = file_get_contents('substitutions.json');
+            $substitutions = json_decode($jsonData, true);
+            $substitutions[] = $data;
+            file_put_contents('substitutions.json', json_encode($substitutions));
+        }
+        ?>
+    </main>
+</body>
+</html>
