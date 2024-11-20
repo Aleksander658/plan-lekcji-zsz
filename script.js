@@ -110,3 +110,50 @@ async function updateLessons() {
 
 setInterval(updateLessons, 60000); // Update every minute
 updateLessons(); // Initial call to set the lessons immediately
+
+async function removePastSubstitutions() {
+    const response = await fetch('substitutions.json');
+    const substitutions = await response.json();
+    const now = new Date();
+
+    const updatedSubstitutions = substitutions.filter(substitution => {
+        const substitutionDate = new Date(substitution.date);
+        const [lessonStart] = substitution['L&H'].split(' ')[1].split('-');
+        const [hours, minutes] = lessonStart.split(':');
+        substitutionDate.setHours(hours, minutes);
+
+        return substitutionDate > now;
+    });
+
+    if (updatedSubstitutions.length !== substitutions.length) {
+        await fetch('update_substitutions.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedSubstitutions)
+        });
+    }
+}
+
+setInterval(removePastSubstitutions, 60000); // Check every minute
+removePastSubstitutions(); // Initial call to clean up immediately
+
+function autoScroll(element) {
+    const scrollHeight = element.scrollHeight;
+    const clientHeight = element.clientHeight;
+    let scrollTop = element.scrollTop;
+
+    if (scrollTop + clientHeight >= scrollHeight) {
+        element.scrollTop = 0;
+    } else {
+        element.scrollTop += 1;
+    }
+}
+
+setInterval(() => {
+    const footerTable = document.querySelector('footer');
+    const mainTable = document.querySelector('main');
+    if (footerTable) autoScroll(footerTable);
+    if (mainTable) autoScroll(mainTable);
+}, 100);
