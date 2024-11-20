@@ -28,7 +28,6 @@ article {
 article img {
     height: 60px; 
     margin-right: 20px;
-    position: absolute; /* Add this line */
     left: 20px; /* Add this line */
 }
 
