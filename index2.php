@@ -1,3 +1,59 @@
+<?php
+session_start();
+
+$users = [
+    'admin' => 'Zszbobowa123!', // Replace with actual username and password
+];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if (isset($users[$username]) && $users[$username] === $password) {
+        $_SESSION['loggedin'] = true;
+    } else {
+        $error = "Invalid username or password.";
+    }
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: index2.php");
+    exit;
+}
+
+if (!isset($_SESSION['loggedin'])) {
+?>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <header>
+        <h1>Login</h1>
+    </header>
+    <main>
+        <form action="index2.php" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit" name="login">Login</button>
+            <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
+        </form>
+    </main>
+</body>
+</html>
+<?php
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -13,6 +69,7 @@
     <header>
     
         <h1>Wprowadzenie danych do Zastępstwa</h1>
+        <a href="index2.php?logout=true">Logout</a>
     
     </header>
 
@@ -155,7 +212,7 @@
         </form>
 
         <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['login'])) {
             $data = [
                 'L&H' => $_POST['L&H'],
                 'date' => $_POST['date'],

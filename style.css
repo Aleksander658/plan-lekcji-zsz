@@ -25,6 +25,15 @@ article {
     position: relative; /* Add this line */
 }
 
+<<<<<<< HEAD
+=======
+article img {
+    height: 60px; 
+    margin-right: 20px;
+    left: 20px; /* Add this line */
+}
+
+>>>>>>> f717ad97fa038f7f3f649d62f75b2c7fa4cde296
 article time {
     font-size: 36px; /* Increase font size */
     color: white;
