@@ -84,7 +84,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <option value="2. 8:50-9:35">2. 8:50-9:35</option>
                 <!-- Add more options as needed -->
                 <option value="3. 9:40-10:25">3. 9:40-10:25</option>
-                <option value="4. 10:30-11:15">4. 10:30-11:15</option>
+                <option value="4. 10:40-11:25">4. 10:40-11:25</option>
                 <option value="5. 11:30-12:15">5. 11:30-12:15</option>
                 <option value="6. 12:20-13:05">6. 12:20-13:05</option>
                 <option value="7. 13:10-13:55">7. 13:10-13:55</option>

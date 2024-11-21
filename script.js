@@ -136,20 +136,33 @@ setInterval(removePastSubstitutions, 60000); // Check every minute
 removePastSubstitutions(); // Initial call to clean up immediately
 
 function autoScroll(element) {
+    if (element.classList.contains('autoscroll')) return;
+
     const scrollHeight = element.scrollHeight;
     const clientHeight = element.clientHeight;
     let scrollTop = element.scrollTop;
+    let direction = element.dataset.scrollDirection || 'down';
 
-    if (scrollTop + clientHeight >= scrollHeight) {
-        element.scrollTop = 0;
+    if (direction === 'down') {
+        if (scrollTop + clientHeight >= scrollHeight) {
+            element.dataset.scrollDirection = 'up';
+        } else {
+            element.scrollTop += 1;
+        }
     } else {
-        element.scrollTop += 1;
+        if (scrollTop <= 0) {
+            element.dataset.scrollDirection = 'down';
+        } else {
+            element.scrollTop -= 1;
+        }
     }
 }
 
 setInterval(() => {
-    const footerTable = document.querySelector('footer');
-    const mainTable = document.querySelector('main');
+    const footerTable = document.querySelector('footer tbody');
+    const mainTable = document.querySelector('main tbody');
     if (footerTable) autoScroll(footerTable);
     if (mainTable) autoScroll(mainTable);
 }, 100);
+
+removePastSubstitutions(); // Initial call to clean up immediately

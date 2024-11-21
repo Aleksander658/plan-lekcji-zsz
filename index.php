@@ -33,7 +33,7 @@
     </aside>
     
     <footer>
-    
+    <p class="autoscroll">
         <h2>Aktualne lekcje</h2>
         
         <table border=1>
@@ -47,9 +47,34 @@
                     <th>Sala</th>
                 </tr>
             </thead>
+    </p>
             
             <tbody id="lessons-today">
-                <!-- Rows will be populated by JavaScript -->
+                <?php
+                $url = "https://plan.zsz.bobowa.pl/plany/o1.html";
+                $html = file_get_contents($url);
+                $dom = new DOMDocument();
+                @$dom->loadHTML($html);
+                $xpath = new DOMXPath($dom);
+                $rows = $xpath->query('//table[@class="tabela"]//tr');
+
+                $currentDate = date('Y-m-d');
+                $class = "5aT";
+
+                foreach ($rows as $row) {
+                    $cells = $xpath->query('td', $row);
+                    if ($cells->length > 0) {
+                        echo '<tr>';
+                        echo '<td>' . htmlspecialchars($cells->item(0)->textContent, ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . $currentDate . '</td>';
+                        echo '<td>' . $class . '</td>';
+                        echo '<td>' . htmlspecialchars($cells->item(2)->textContent, ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($cells->item(3)->textContent, ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '<td>' . htmlspecialchars($cells->item(4)->textContent, ENT_QUOTES, 'UTF-8') . '</td>';
+                        echo '</tr>';
+                    }
+                }
+                ?>
             </tbody>
         
         </table>

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: "Gill Sans", sans-serif;
+    overflow: hidden;
 }
 
 body {
@@ -93,8 +94,7 @@ footer {
     width: 65%;
     height: 500px;
     float: right;
-    overflow: auto;
-    overflow-y: auto; /* Enable vertical scrolling */
+    overflow: hidden; /* Disable auto-scrolling for the entire footer */
     max-height: 500px; /* Set a maximum height */
 }
 
@@ -116,6 +116,9 @@ footer table th, footer table td {
 footer table th {
     background-color: #f2f2f2;
     color: black;
+    position: sticky; /* Make the table headers sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1; /* Ensure it stays above other content */
 }
 
 footer table tr:nth-child(even) {
