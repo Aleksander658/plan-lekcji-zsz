@@ -11,7 +11,6 @@
 
 <body>
     <article>
-        <img src="Logo ZSZ Bobwa.png" alt="Logo ZSZ Bobwa">
         <time datetime="<?php echo date('Y-m-d\TH:i:s'); ?>">
             <?php echo date('H:i'); ?>
         </time>
