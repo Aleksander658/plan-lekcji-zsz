@@ -114,15 +114,11 @@ updateLessons(); // Initial call to set the lessons immediately
 async function removePastSubstitutions() {
     const response = await fetch('substitutions.json');
     const substitutions = await response.json();
-    const now = new Date();
+    const now = new Date().setHours(0, 0, 0, 0); // Get current date without time
 
     const updatedSubstitutions = substitutions.filter(substitution => {
-        const substitutionDate = new Date(substitution.date);
-        const [lessonStart] = substitution['L&H'].split(' ')[1].split('-');
-        const [hours, minutes] = lessonStart.split(':');
-        substitutionDate.setHours(hours, minutes);
-
-        return substitutionDate > now;
+        const substitutionDate = new Date(substitution.date).setHours(0, 0, 0, 0);
+        return substitutionDate >= now;
     });
 
     if (updatedSubstitutions.length !== substitutions.length) {
