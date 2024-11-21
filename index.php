@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plan lekcji ZSZ Bobowa</title>
     <link rel="stylesheet" href="style.css">
-    <meta http-equiv="refresh" content="3600">
+    <meta http-equiv="refresh" content="300">
 </head>
 
 <body>
     <article>
+        <img src="Logo ZSZ Bobwa.png" alt="Logo ZSZ Bobowa">
         <time datetime="<?php echo date('Y-m-d\TH:i:s'); ?>">
             <?php echo date('H:i'); ?>
         </time>
