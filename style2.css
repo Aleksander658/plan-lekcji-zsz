@@ -13,7 +13,7 @@ header {
 }
 
 main {
-    max-width: 600px;
+    max-width: 1200px; /* Increase max-width to accommodate side-by-side forms */
     margin: 20px auto;
     padding: 20px;
     background-color: white;
@@ -21,9 +21,15 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.form-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 form {
     display: flex;
     flex-direction: column;
+    width: 48%; /* Adjust width to fit two forms side by side */
 }
 
 label {
@@ -31,7 +37,7 @@ label {
     font-weight: bold;
 }
 
-select, input[type="text"], input[type="date"] {
+select, input[type="text"], input[type="date"], textarea {
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
@@ -52,4 +58,13 @@ button {
 
 button:hover {
     background-color: seagreen;
+}
+
+/* Style for the delete button */
+form button[name="delete_info"] {
+    background-color: crimson;
+}
+
+form button[name="delete_info"]:hover {
+    background-color: darkred;
 }
