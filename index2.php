@@ -54,6 +54,60 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 ?>
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['add_info'])) {
+        $info = [
+            'title' => $_POST['title'],
+            'description' => $_POST['description'],
+            'file' => ''
+        ];
+
+        if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = 'uploads/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+            $fileName = basename($_FILES['file']['name']);
+            $targetFile = $uploadDir . $fileName;
+            move_uploaded_file($_FILES['file']['tmp_name'], $targetFile);
+            $info['file'] = $targetFile;
+        }
+
+        $jsonData = file_get_contents('important_info.json');
+        $importantInfo = json_decode($jsonData, true);
+        if (!$importantInfo) {
+            $importantInfo = [];
+        }
+        $importantInfo[] = $info;
+        file_put_contents('important_info.json', json_encode($importantInfo));
+    }
+
+    if (isset($_POST['delete_info'])) {
+        file_put_contents('important_info.json', json_encode([]));
+        // Optionally delete uploaded files
+        $importantInfo = [];
+        file_put_contents('important_info.json', json_encode($importantInfo));
+    }
+
+    if (isset($_POST['L&H'])) {
+        $data = [
+            'L&H' => $_POST['L&H'],
+            'date' => $_POST['date'],
+            'class' => $_POST['class'],
+            'subject' => $_POST['subject'],
+            'teacher' => $_POST['teacher'],
+            'zastepstwo' => $_POST['zastepstwo'],
+            'teacher2' => $_POST['teacher2']
+        ];
+
+        $jsonData = file_get_contents('substitutions.json');
+        $substitutions = json_decode($jsonData, true);
+        $substitutions[] = $data;
+        file_put_contents('substitutions.json', json_encode($substitutions));
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -74,9 +128,9 @@ if (!isset($_SESSION['loggedin'])) {
     </header>
 
     <main>
-        
+    
+
         <form action="index2.php" method="post">
-            
             <label for="L&H">Numer Lekcji i Godzina:</label>
             
             <select id="L&H" name="L&H" required>
@@ -159,6 +213,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <option value="J.Wiejaczka">J.Wiejaczka</option>
                 <option value="E.Wołkowicz">E.Wołkowicz</option>
                 <option value="J.Zborowska">J.Zborowska</option>
+                <option value="-">-</option>
             </select>
             
             <br>
@@ -168,7 +223,7 @@ if (!isset($_SESSION['loggedin'])) {
             
             <br>
             
-            <label for="teacher2">Nauczyciel na zastepstwo:</label>
+            <label for="teacher2">Nauczyciel na zastępstwo:</label>
             
             <select id="teacher2" name="teacher2" required>
                 <option value="W.Szafraniec">W.Szafraniec</option>
@@ -210,25 +265,6 @@ if (!isset($_SESSION['loggedin'])) {
             <button type="submit">Dodaj</button>
         
         </form>
-
-        <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['login'])) {
-            $data = [
-                'L&H' => $_POST['L&H'],
-                'date' => $_POST['date'],
-                'class' => $_POST['class'],
-                'subject' => $_POST['subject'],
-                'teacher' => $_POST['teacher'],
-                'zastepstwo' => $_POST['zastepstwo'],
-                'teacher2' => $_POST['teacher2']
-            ];
-
-            $jsonData = file_get_contents('substitutions.json');
-            $substitutions = json_decode($jsonData, true);
-            $substitutions[] = $data;
-            file_put_contents('substitutions.json', json_encode($substitutions));
-        }
-        ?>
     
     </main>
 

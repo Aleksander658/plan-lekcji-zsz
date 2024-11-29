@@ -136,8 +136,6 @@ setInterval(removePastSubstitutions, 60000); // Check every minute
 removePastSubstitutions(); // Initial call to clean up immediately
 
 function autoScroll(element) {
-    if (element.classList.contains('autoscroll')) return;
-
     const scrollHeight = element.scrollHeight;
     const clientHeight = element.clientHeight;
     let scrollTop = element.scrollTop;
@@ -158,11 +156,12 @@ function autoScroll(element) {
     }
 }
 
+// Target the scrollable-table divs instead of footer and main
 setInterval(() => {
-    const footerTable = document.querySelector('footer tbody');
-    const mainTable = document.querySelector('main tbody');
-    if (footerTable) autoScroll(footerTable);
-    if (mainTable) autoScroll(mainTable);
+    const scrollableTables = document.querySelectorAll('.scrollable-table');
+    scrollableTables.forEach(tableContainer => {
+        autoScroll(tableContainer);
+    });
 }, 100);
 
 removePastSubstitutions(); // Initial call to clean up immediately
