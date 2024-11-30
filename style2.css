@@ -80,12 +80,12 @@ button:hover {
 }
 
 /* Style for the delete button */
-form button[name="delete_info"], form button[name="delete_normal_info"] {
+form button[name="delete_info"], form button[name="delete_normal_info"], form button[name="delete_image_btn"] {
     background-color: crimson;
     margin-top: 10px; /* Add margin to separate from other buttons */
 }
 
-form button[name="delete_info"]:hover, form button[name="delete_normal_info"]:hover {
+form button[name="delete_info"]:hover, form button[name="delete_normal_info"]:hover, form button[name="delete_image_btn"]:hover {
     background-color: darkred;
 }
 
