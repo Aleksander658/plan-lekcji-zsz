@@ -23,13 +23,32 @@ main {
 
 .form-container {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 20px; /* Add gap between forms */
+}
+
+.form-center {
+    flex: 1 1 100%; /* Full width */
+    display: flex;
+    justify-content: center;
+}
+
+.form-left, .form-right {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 48%; /* Adjust width to fit two forms side by side */
+    margin: auto;
+    padding: auto;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    width: 48%; /* Adjust width to fit two forms side by side */
+    width: 100%; /* Full width within its container */
+    background-color: #f9f9f9; /* Add background color */
+    padding: 20px; /* Add padding */
+    border-radius: 10px; /* Add border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
 }
 
 label {
@@ -37,7 +56,7 @@ label {
     font-weight: bold;
 }
 
-select, input[type="text"], input[type="date"], textarea {
+select, input[type="text"], input[type="date"], textarea, input[type="file"] {
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
@@ -61,10 +80,22 @@ button:hover {
 }
 
 /* Style for the delete button */
-form button[name="delete_info"] {
+form button[name="delete_info"], form button[name="delete_normal_info"] {
     background-color: crimson;
+    margin-top: 10px; /* Add margin to separate from other buttons */
 }
 
-form button[name="delete_info"]:hover {
+form button[name="delete_info"]:hover, form button[name="delete_normal_info"]:hover {
     background-color: darkred;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column; /* Stack forms vertically on smaller screens */
+    }
+
+    .form-left, .form-right, .form-center {
+        width: 100%; /* Full width on smaller screens */
+    }
 }

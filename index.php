@@ -39,11 +39,30 @@
             ?>
             <aside>
                 <h2>Informacje</h2>
-                <div class="post">
-                    <h3>Przykładowy Post</h3>
-                    <p>Witajcie uczniowie! Przypominamy, że w przyszłym tygodniu odbędzie się wycieczka szkolna do Krakowa. Prosimy o zabranie ze sobą odpowiednich dokumentów oraz zgody rodziców. Szczegóły dotyczące wyjazdu znajdziecie na tablicy ogłoszeń.</p>
-                    <p>Data: 2023-10-15</p>
-                </div>
+                <?php
+                $jsonData = file_get_contents('normal_info.json');
+                $normalInfo = json_decode($jsonData, true);
+                if ($normalInfo && count($normalInfo) > 0) {
+                    foreach ($normalInfo as $info) {
+                        echo '<div class="post">';
+                        echo '<h3>' . htmlspecialchars($info['title'], ENT_QUOTES, 'UTF-8') . '</h3>';
+                        echo '<p>' . htmlspecialchars($info['description'], ENT_QUOTES, 'UTF-8') . '</p>';
+                        if (!empty($info['file'])) {
+                            echo '<img src="' . htmlspecialchars($info['file'], ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($info['title'], ENT_QUOTES, 'UTF-8') . '">';
+                        }
+                        echo '<form action="update_info.php" method="post" style="margin-top:10px;">';
+                        echo '<input type="hidden" name="delete_title" value="' . htmlspecialchars($info['title'], ENT_QUOTES, 'UTF-8') . '">';
+                        echo '<button type="submit" name="delete_normal_info">Usuń</button>';
+                        echo '</form>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo '<div class="post">';
+                    echo '<h3>Brak informacji</h3>';
+                    echo '<p>Obecnie brak nowych informacji.</p>';
+                    echo '</div>';
+                }
+                ?>
             </aside>
             
             <footer>
@@ -134,11 +153,15 @@
         <h2>Zdjęcia</h2>
         <div class="slideshow-container">
             <?php
-            $images = ["zdjecie1.jpg", "zdjecie2.jpg", "zdjecie3.jpg", "zdjecie4.jpg", "zdjecie5.jpg", "zdjecie6.jpg"];
-            
-            foreach ($images as $index => $image) {
-                $activeClass = $index === 0 ? 'active' : '';
-                echo '<img src="' . htmlspecialchars($image, ENT_QUOTES, 'UTF-8') . '" class="' . $activeClass . '">';
+            $jsonData = file_get_contents('images.json');
+            $images = json_decode($jsonData, true);
+            if ($images && count($images) > 0) {
+                foreach ($images as $index => $image) {
+                    $activeClass = $index === 0 ? 'active' : '';
+                    echo '<img src="' . htmlspecialchars($image, ENT_QUOTES, 'UTF-8') . '" class="' . $activeClass . '">';
+                }
+            } else {
+                echo '<p>Brak zdjęć</p>';
             }
             ?>
         </div>

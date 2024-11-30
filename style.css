@@ -193,13 +193,15 @@ section {
     display: none;
 }
 
+/* Poprawny selektor z kropką przed nazwą klasy */
 .slideshow-container img.active {
     display: block;
-}
+} /* Dodany brakujący nawias zamykający */
 
 /* Adjust main to handle auto-scrolling */
 main {
     background-color: snow;
+    text-align: center;
     text-align: center;
     width: 65%;
     height: 500px;
@@ -294,4 +296,14 @@ aside, footer, section, main {
 }
 
 /* Ensure no borders or margins are added in the future */
+
+/* Style for the delete button */
+form button[name="delete_normal_info"] {
+    background-color: crimson;
+    margin-top: 5px;
+}
+
+form button[name="delete_normal_info"]:hover {
+    background-color: darkred;
+}
 

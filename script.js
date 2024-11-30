@@ -11,7 +11,8 @@ function showSlides() {
     slideIndex = (slideIndex + 1) % slides.length;
 }
 
-setInterval(showSlides, 5000);
+setInterval(showSlides, 5000); // Change image every 5 seconds
+showSlides(); // Initial call to display the first slide immediately
 
 function updateTime() {
     const timeElement = document.querySelector('article time');
