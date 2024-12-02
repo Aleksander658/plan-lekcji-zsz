@@ -39,10 +39,10 @@ if (!isset($_SESSION['loggedin'])) {
     <main>
         <form action="index2.php" method="post">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username">
             <br>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password">
             <br>
             <button type="submit" name="login">Login</button>
             <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <form action="index2.php" method="post">
                     <h1>Dodanie Zastępstwa</h1>
                     <label for="L&H">Numer Lekcji i Godzina:</label>
-                    <select id="L&H" name="L&H" required>
+                    <select id="L&H" name="L&H">
                         <option value="1. 8:00-8:45">1. 8:00-8:45</option>
                         <option value="2. 8:50-9:35">2. 8:50-9:35</option>
                         <!-- Add more options as needed -->
@@ -97,10 +97,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </select>
                     <br>
                     <label for="date">Data:</label>
-                    <input type="date" id="date" name="date" required>
+                    <input type="date" id="date" name="date">
                     <br>
                     <label for="class">Klasa:</label>
-                    <select id="class" name="class" required>
+                    <select id="class" name="class">
                         <option value="1SB">1SB</option>
                         <!-- Add more options as needed -->
                         <option value="1Ta">1Ta</option>
@@ -116,10 +116,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </select>
                     <br>
                     <label for="subject">Zajęcia:</label>
-                    <input type="text" id="subject" name="subject" required>
+                    <input type="text" id="subject" name="subject">
                     <br>
                     <label for="teacher">Nauczyciel:</label>
-                    <select id="teacher" name="teacher" required>
+                    <select id="teacher" name="teacher">
                         <option value="W.Szafraniec">W.Szafraniec</option>
                         <!-- Add more options as needed -->
                         <option value="A.Iwańska">A.Iwańska</option>
@@ -157,10 +157,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </select>
                     <br>
                     <label for="zastepstwo">Zastępstwo:</label>
-                    <input type="text" id="zastepstwo" name="zastepstwo" required>
+                    <input type="text" id="zastepstwo" name="zastepstwo">
                     <br>
                     <label for="teacher2">Nauczyciel na zastępstwo:</label>
-                    <select id="teacher2" name="teacher2" required>
+                    <select id="teacher2" name="teacher2">
                         <option value="W.Szafraniec">W.Szafraniec</option>
                         <!-- Add more options as needed -->
                         <option value="A.Iwańska">A.Iwańska</option>
@@ -243,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <form action="index2.php" method="post" enctype="multipart/form-data">
                     <h1>Dodanie Zdjęcia</h1>
                     <label for="image_file">Plik:</label>
-                    <input type="file" id="image_file" name="image_file" required>
+                    <input type="file" id="image_file" name="image_file">
                     <br>
                     <button type="submit" name="add_image">Dodaj Zdjęcie</button>
                 </form>
@@ -254,7 +254,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <form action="index2.php" method="post">
                     <h1>Usunięcie Zdjęcia</h1>
                     <label for="delete_image">Nazwa pliku do usunięcia:</label>
-                    <input type="text" id="delete_image" name="delete_image" placeholder="np. image1.jpg" required>
+                    <input type="text" id="delete_image" name="delete_image" placeholder="np. image1.jpg">
                     <br>
                     <button type="submit" name="delete_image_btn">Usuń Zdjęcie</button>
                 </form>

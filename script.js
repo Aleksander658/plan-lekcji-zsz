@@ -14,6 +14,24 @@ function showSlides() {
 setInterval(showSlides, 5000); // Change image every 5 seconds
 showSlides(); // Initial call to display the first slide immediately
 
+let infoIndex = 0;
+const infoSlides = document.querySelectorAll('.slideshow-container .post');
+
+function showInfoSlides() {
+    infoSlides.forEach((slide, index) => {
+        slide.classList.remove('active');
+        if (index === infoIndex) {
+            slide.classList.add('active');
+        }
+    });
+    infoIndex = (infoIndex + 1) % infoSlides.length;
+}
+
+if (infoSlides.length > 1) {
+    setInterval(showInfoSlides, 30000); // Change information every 30 seconds
+    showInfoSlides(); // Initial call to display the first slide immediately
+}
+
 function updateTime() {
     const timeElement = document.querySelector('article time');
     const messageElement = document.querySelector('article .message');
@@ -31,29 +49,32 @@ function updateTime() {
         // Check if it's Friday after 15:40 or the weekend
         if ((day === 5 && currentTime >= 15 * 60 + 40) || day === 6 || day === 0) {
             message = 'Weekend! 🎉';
+        } else if (day >= 1 && day <= 4 && currentTime >= 15 * 60 + 40) {
+            message = 'Koniec lekcji.';
         } else {
             const schedule = [
-                { start: 7 * 60, end: 8 * 60, message: 'Do pierwszej lekcji zostało: ' },
-                { start: 8 * 60, end: 8 * 60 + 45, message: 'Do końca lekcji zostało: ' },
-                { start: 8 * 60 + 45, end: 8 * 60 + 50, message: 'Do końca przerwy zostało: ' },
-                { start: 8 * 60 + 50, end: 9 * 60 + 35, message: 'Do końca lekcji zostało: ' },
-                { start: 9 * 60 + 35, end: 9 * 60 + 40, message: 'Do końca przerwy zostało: ' },
-                { start: 9 * 60 + 40, end: 10 * 60 + 25, message: 'Do końca lekcji zostało: ' },
-                { start: 10 * 60 + 25, end: 10 * 60 + 40, message: 'Do końca przerwy zostało: ' },
-                { start: 10 * 60 + 40, end: 11 * 60 + 25, message: 'Do końca lekcji zostało: ' },
-                { start: 11 * 60 + 25, end: 11 * 60 + 30, message: 'Do końca przerwy zostało: ' },
-                { start: 11 * 60 + 30, end: 12 * 60 + 15, message: 'Do końca lekcji zostało: ' },
-                { start: 12 * 60 + 15, end: 12 * 60 + 20, message: 'Do końca przerwy zostało: ' },
-                { start: 12 * 60 + 20, end: 13 * 60 + 5, message: 'Do końca lekcji zostało: ' },
-                { start: 13 * 60 + 5, end: 13 * 60 + 10, message: 'Do końca przerwy zostało: ' },
-                { start: 13 * 60 + 10, end: 13 * 60 + 55, message: 'Do końca lekcji zostało: ' },
-                { start: 13 * 60 + 55, end: 14 * 60, message: 'Do końca przerwy zostało: ' },
-                { start: 14 * 60, end: 14 * 60 + 45, message: 'Do końca lekcji zostało: ' },
-                { start: 14 * 60 + 45, end: 14 * 60 + 50, message: 'Do końca przerwy zostało: ' },
-                { start: 14 * 60 + 50, end: 15 * 60 + 35, message: 'Do końca lekcji zostało: ' },
-                { start: 15 * 60 + 35, end: 15 * 60 + 40, message: 'Do końca przerwy zostało: ' },
-                { start: 15 * 60 + 40, end: 7 * 60, message: 'Koniec lekcji.' },
-                // Add more schedule entries here as needed
+            { start: 7 * 60, end: 8 * 60, message: 'Do pierwszej lekcji zostało: ' },
+            { start: 8 * 60, end: 8 * 60 + 45, message: 'Do końca lekcji zostało: ' },
+            { start: 8 * 60 + 45, end: 8 * 60 + 50, message: 'Do końca przerwy zostało: ' },
+            { start: 8 * 60 + 50, end: 9 * 60 + 35, message: 'Do końca lekcji zostało: ' },
+            { start: 9 * 60 + 35, end: 9 * 60 + 40, message: 'Do końca przerwy zostało: ' },
+            { start: 9 * 60 + 40, end: 10 * 60 + 25, message: 'Do końca lekcji zostało: ' },
+            { start: 10 * 60 + 25, end: 10 * 60 + 40, message: 'Do końca przerwy zostało: ' },
+            { start: 10 * 60 + 40, end: 11 * 60 + 25, message: 'Do końca lekcji zostało: ' },
+            { start: 11 * 60 + 25, end: 11 * 60 + 30, message: 'Do końca przerwy zostało: ' },
+            { start: 11 * 60 + 30, end: 12 * 60 + 15, message: 'Do końca lekcji zostało: ' },
+            { start: 12 * 60 + 15, end: 12 * 60 + 20, message: 'Do końca przerwy zostało: ' },
+            { start: 12 * 60 + 20, end: 13 * 60 + 5, message: 'Do końca lekcji zostało: ' },
+            { start: 13 * 60 + 5, end: 13 * 60 + 10, message: 'Do końca przerwy zostało: ' },
+            { start: 13 * 60 + 10, end: 13 * 60 + 55, message: 'Do końca lekcji zostało: ' },
+            { start: 13 * 60 + 55, end: 14 * 60, message: 'Do końca przerwy zostało: ' },
+            { start: 14 * 60, end: 14 * 60 + 45, message: 'Do końca lekcji zostało: ' },
+            { start: 14 * 60 + 45, end: 14 * 60 + 50, message: 'Do końca przerwy zostało: ' },
+            { start: 14 * 60 + 50, end: 15 * 60 + 35, message: 'Do końca lekcji zostało: ' },
+            { start: 15 * 60 + 35, end: 15 * 60 + 40, message: 'Do końca przerwy zostało: ' },
+            { start: 15 * 60 + 40, end: 23 * 60 + 59, message: 'Koniec lekcji.' },
+            { start: 0, end: 7 * 60, message: 'Koniec lekcji.' },
+            // Add more schedule entries here as needed
             ];
 
             for (const period of schedule) {
