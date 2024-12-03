@@ -19,6 +19,17 @@
         <div class="message"></div>
     
     </article>
+
+    <?php
+    if (file_exists('info.json')) {
+        $info = json_decode(file_get_contents('info.json'), true);
+        echo '<section style="width: 100%;">';
+        echo '<h2>' . htmlspecialchars($info['title'], ENT_QUOTES, 'UTF-8') . '</h2>';
+        echo '<p>' . htmlspecialchars($info['content'], ENT_QUOTES, 'UTF-8') . '</p>';
+        echo '<p>Data: ' . htmlspecialchars($info['date'], ENT_QUOTES, 'UTF-8') . '</p>';
+        echo '</section>';
+    } else {
+    ?>
     
     <aside>
         
@@ -80,6 +91,10 @@
         </table>
     
     </footer>
+
+    <?php
+    }
+    ?>
 
     <main>
     

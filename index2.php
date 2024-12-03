@@ -211,22 +211,55 @@ if (!isset($_SESSION['loggedin'])) {
         
         </form>
 
+        <h2>Dodaj Ważne Informacje</h2>
+        <form action="index2.php" method="post">
+            <label for="info-title">Tytuł:</label>
+            <input type="text" id="info-title" name="info-title" required>
+            <br>
+            <label for="info-content">Treść:</label>
+            <textarea id="info-content" name="info-content" required></textarea>
+            <br>
+            <label for="info-date">Data:</label>
+            <input type="date" id="info-date" name="info-date" required>
+            <br>
+            <button type="submit" name="add-info">Dodaj</button>
+        </form>
+
+        <h2>Usuń Ważne Informacje</h2>
+        <form action="index2.php" method="post">
+            <button type="submit" name="remove-info">Usuń</button>
+        </form>
+
         <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['login'])) {
-            $data = [
-                'L&H' => $_POST['L&H'],
-                'date' => $_POST['date'],
-                'class' => $_POST['class'],
-                'subject' => $_POST['subject'],
-                'teacher' => $_POST['teacher'],
-                'zastepstwo' => $_POST['zastepstwo'],
-                'teacher2' => $_POST['teacher2']
-            ];
+            if (isset($_POST['add-info'])) {
+                $info = [
+                    'title' => $_POST['info-title'],
+                    'content' => $_POST['info-content'],
+                    'date' => $_POST['info-date']
+                ];
 
-            $jsonData = file_get_contents('substitutions.json');
-            $substitutions = json_decode($jsonData, true);
-            $substitutions[] = $data;
-            file_put_contents('substitutions.json', json_encode($substitutions));
+                file_put_contents('info.json', json_encode($info));
+            } elseif (isset($_POST['remove-info'])) {
+                if (file_exists('info.json')) {
+                    unlink('info.json');
+                }
+            } else {
+                $data = [
+                    'L&H' => $_POST['L&H'],
+                    'date' => $_POST['date'],
+                    'class' => $_POST['class'],
+                    'subject' => $_POST['subject'],
+                    'teacher' => $_POST['teacher'],
+                    'zastepstwo' => $_POST['zastepstwo'],
+                    'teacher2' => $_POST['teacher2']
+                ];
+
+                $jsonData = file_get_contents('substitutions.json');
+                $substitutions = json_decode($jsonData, true);
+                $substitutions[] = $data;
+                file_put_contents('substitutions.json', json_encode($substitutions));
+            }
         }
         ?>
     
